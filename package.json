@@ -1,0 +1,25 @@
+{
+  "name": "todoist-app",
+  "version": "0.0.1",
+  "description": "todoist app from command line",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matisantillan11/todoist.git"
+  },
+  "author": "@matisantillan11",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matisantillan11/todoist/issues"
+  },
+  "homepage": "https://github.com/Matisantillan11/todoist#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^8.0.0",
+    "uuid": "^8.3.2"
+  }
+}
