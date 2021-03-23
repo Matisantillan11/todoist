@@ -1,10 +1,18 @@
 const Task = require("../models/Task.js");
+const { pushData, getData } = require("../helper/FileManagment.js");
 class TaskRepository {
   constructor() {
-    this._tasks = [];
+    const data = getData();
+    if (data) {
+      this._tasks = JSON.parse(data);
+    } else {
+      this._tasks = [];
+    }
   }
 
-  getTasks() {}
+  getTasks() {
+    return this._tasks;
+  }
 
   /**
    *
@@ -14,7 +22,7 @@ class TaskRepository {
   addTasks(title) {
     const task = new Task(title);
     this._tasks.push(task);
-    return this._tasks;
+    pushData(this._tasks);
   }
 
   deleteTask() {}

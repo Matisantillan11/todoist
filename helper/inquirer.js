@@ -15,18 +15,31 @@ const menuList = [
         value: 2,
         name: "2 - List tasks",
       },
+      {
+        value: 0,
+        name: "0 - Exit",
+      },
     ],
   },
 ];
 
 const inquirerMenu = async () => {
-  console.log(
-    "------- Welcome to Todoist App by @matisantillan11 -------".rainbow
-  );
-
+  console.log("Select an option 😋".bold);
   const { option } = await inquirer.prompt(menuList);
-
   return option;
 };
 
-module.exports = { inquirerMenu };
+const inquirerGetOption = async (message) => {
+  const question = [
+    {
+      type: "input",
+      name: "answer",
+      message,
+    },
+  ];
+
+  const { answer } = await inquirer.prompt(question);
+  return answer;
+};
+
+module.exports = { inquirerMenu, inquirerGetOption };
