@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const colors = require("colors");
-
+const TaskRepository = require("../repositories/TaskRepository");
 const menuList = [
   {
     type: "list",
@@ -16,8 +16,16 @@ const menuList = [
         name: "2 - List tasks",
       },
       {
-        value: 0,
-        name: "0 - Exit",
+        value: 3,
+        name: "3 - Complete Task",
+      },
+      {
+        value: 4,
+        name: "4 - Delete Task",
+      },
+      {
+        value: 5,
+        name: "5 - Exit",
       },
     ],
   },
@@ -42,4 +50,24 @@ const inquirerGetOption = async (message) => {
   return answer;
 };
 
-module.exports = { inquirerMenu, inquirerGetOption };
+const allTasks = async (message) => {
+  const taskRepository = new TaskRepository();
+  const tasks = taskRepository.getTasks();
+  const taskChoices = [];
+  tasks.map((task) => {
+    taskChoices.push({ value: task.title, name: task.title });
+  });
+  taskChoices.push({ value: false, name: "Go back ...>".magenta });
+  const listOfTasks = [
+    {
+      type: "list",
+      name: "option",
+      message: message,
+      choices: taskChoices,
+    },
+  ];
+  const { option } = await inquirer.prompt(listOfTasks);
+  return option;
+};
+
+module.exports = { inquirerMenu, inquirerGetOption, allTasks };

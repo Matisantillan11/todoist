@@ -1,6 +1,6 @@
 {
   "name": "todoist-app",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "todoist app from command line",
   "main": "index.js",
   "scripts": {

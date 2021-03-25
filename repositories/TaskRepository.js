@@ -25,7 +25,25 @@ class TaskRepository {
     pushData(this._tasks);
   }
 
-  deleteTask() {}
-  completeTask() {}
+  deleteTask(title) {
+    this._tasks.map((task, i) => {
+      if (task.title == title) {
+        this._tasks.splice(i, 1);
+        pushData(this._tasks);
+      }
+    });
+  }
+
+  completeTask(title) {
+    this._tasks.forEach((task) => {
+      if (task.title == title) {
+        console.log("entre al if");
+        task.done = true;
+      } else {
+        console.count("no completed");
+      }
+    });
+    pushData(this._tasks);
+  }
 }
 module.exports = TaskRepository;
